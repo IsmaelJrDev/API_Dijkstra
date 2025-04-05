@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Dijkstra</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_index.css') }}">
+</head>
+<body>
+    <div id="particles-js"></div>
+    <h1>Dijkstra Grafico</h1>
+    
+    </div>
+
+    <script src="{{ url_for('static', filename='js/particles.min.js') }}"></script>
+    <script>
+        particlesJS.load('particles-js', '{{ url_for("static", filename="js/particlesjs-config.json") }}', function() {
+            console.log('Partículas cargadas correctamente.');
+        });
+    </script>
+</body>
+
+<footer>
+    <div class="contenedor">
+        <p class="copy"> ISIC - 3501 &copy; 2025 - IsmaelJrDev</p>
+    </div>
+</footer>
+
+</html>
