@@ -46,7 +46,13 @@
     </div>
 
     <script src="{{ url_for('static', filename='js/particles.min.js') }}"></script>
+    <script>
+        particlesJS.load('particles-js', "{{ url_for('static', filename='js/particlesjs-config.json') }}", function() {
+            console.log('Partículas cargadas correctamente.');
+        });
+    </script>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
 
     <footer>
         <div class="contenedor">
