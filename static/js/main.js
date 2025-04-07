@@ -54,7 +54,7 @@ function calcularDijkstra(nodos, aristas, inicio, fin) {
 function drawGraph(nodos, aristas, camino, distancia) {
     const canvas = document.getElementById('graphCanvas');
     const ctx = canvas.getContext('2d');
-    ctx.clearRect(0, 0, canvas.width, canvas.height);  // Limpiar el canvas antes de dibujar
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     const nodeCoords = generateNodePositions(nodos);
 
@@ -62,48 +62,45 @@ function drawGraph(nodos, aristas, camino, distancia) {
     aristas.forEach(arista => {
         const from = nodeCoords[arista.from];
         const to = nodeCoords[arista.to];
-        
-        // Dibujar las aristas en el fondo
         ctx.beginPath();
         ctx.moveTo(from.x, from.y);
         ctx.lineTo(to.x, to.y);
-        ctx.strokeStyle = '#aaa';  // Color de las aristas
-        ctx.lineWidth = 2;  // Ancho de las aristas
+        ctx.strokeStyle = '#aaa';
+        ctx.lineWidth = 2;
         ctx.stroke();
 
-        // Mostrar el peso de las aristas al costado
+        // Mostrar el peso al costado de la arista
         const midX = (from.x + to.x) / 2;
         const midY = (from.y + to.y) / 2;
-        ctx.fillStyle = '#aaa';  // Color del peso
-        ctx.font = "12px Arial";  // Tamaño de la fuente para los pesos
-        ctx.fillText(arista.weight, midX + 10, midY + 10);  // Se desplaza para mostrarlo al costado
+        ctx.fillStyle = '#aaa';
+        ctx.fillText(arista.weight, midX + 10, midY + 10);  // Se desplaza un poco para mostrarlo al costado
     });
 
-    // Luego dibujamos los nodos encima de las aristas
-    nodos.forEach(node => {
-        ctx.beginPath();
-        ctx.arc(nodeCoords[node].x, nodeCoords[node].y, 20, 0, 2 * Math.PI);
-        ctx.fillStyle = '#fff';  // Color de los nodos
-        ctx.fill();  // Llenar el nodo con color blanco
-        ctx.stroke();  // Contorno de los nodos
-        ctx.fillStyle = '#000';  // Color de los números de los nodos
-        ctx.font = "14px Arial";  // Tamaño de la fuente para los números
-        ctx.fillText(node, nodeCoords[node].x - 5, nodeCoords[node].y + 5);  // Escribir el nombre del nodo
-    });
 
     // Resaltar el camino más corto
     if (camino.length > 1) {
-        ctx.lineWidth = 4;  // Hacer el camino más ancho
-        ctx.strokeStyle = 'red';  // Color del camino más corto
         for (let i = 0; i < camino.length - 1; i++) {
             const from = nodeCoords[camino[i]];
             const to = nodeCoords[camino[i + 1]];
             ctx.beginPath();
             ctx.moveTo(from.x, from.y);
             ctx.lineTo(to.x, to.y);
+            ctx.strokeStyle = 'red';
+            ctx.lineWidth = 4;
             ctx.stroke();
         }
     }
+
+    // Luego dibujamos los nodos encima de las aristas
+    nodos.forEach(node => {
+        ctx.beginPath();
+        ctx.arc(nodeCoords[node].x, nodeCoords[node].y, 20, 0, 2 * Math.PI);
+        ctx.fillStyle = '#fff';
+        ctx.fill();
+        ctx.stroke();
+        ctx.fillStyle = '#000';
+        ctx.fillText(node, nodeCoords[node].x - 5, nodeCoords[node].y + 5);
+    });
 
     // Mostrar la solución con el peso total
     const solucionText = `Camino más corto: ${camino.join(' -> ')}\nDistancia total: ${distancia}`;
