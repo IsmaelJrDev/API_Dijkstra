@@ -1,14 +1,10 @@
-# Importacion de bibliotecas a usar
-from flask import Flask, jsonify
+from flask import Flask, render_template
 
-# Instancia de la clase Flask
-app = Flask(__name__) 
+app = Flask(__name__)
 
-# Definicion de la ruta principal
-@app.route("/")
-def root():
-    return "Hola Mundo"
+@app.route('/')
+def index():
+    return render_template('index.html')
 
-# Inicializar nuestra aplicacion
-if __name__ =='__main__':
-    app.run(debug=True) # Ejecuta la aplicacion en modo debug
+if __name__ == '__main__':
+    app.run(debug=True)
