@@ -111,7 +111,6 @@ function drawGraph(nodos, aristas, camino, distancia) {
     document.getElementById('solucion').innerText = solucionText;  // Mostrar en un área de texto adicional
 }
 
-
 // Generar posiciones de los nodos de manera dinámica
 function generateNodePositions(nodos) {
     const positions = {};
