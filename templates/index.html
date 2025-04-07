@@ -45,12 +45,14 @@
         </div>
     </div>
 
+    <!--Scripts de las particulas de fondo-->
     <script src="{{ url_for('static', filename='js/particles.min.js') }}"></script>
     <script>
         particlesJS.load('particles-js', "{{ url_for('static', filename='js/particlesjs-config.json') }}", function() {
             console.log('Partículas cargadas correctamente.');
         });
     </script>
+    <!--Scripts de la lógica del programa-->
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 
 
